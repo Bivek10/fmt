@@ -25,7 +25,7 @@ platform:android do
          release_notes:"Bug fixes and improvements.",
          apk_path:"../build/app/outputs/flutter-apk/app-release.apk",
          firebase_cli_path:"/home/bivek/nodejs/bin/firebase",
-         firebase_cli_token:"1//0gDC05cD2riUOCgYIARAAGBASNwF-L9IrUbGOGU1P1bXjchy_ZNBHkYVkRogObUUpItDBoA7KpbAQ5XEI_GzD25_i",
+         firebase_cli_token:"1//0gDC05cD2riUOCgYIARAAGBASNwF-L9IrUbGOGU1P1bXjchy_ZNBHkYVkRogObUUpItDBoA7KpbAQ5XEI_GzD25_nMSJL7ORLcwE",
          app:"1:436087509998:android:c0a56da14c157d9f2174ff",
      )
      end
