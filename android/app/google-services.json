@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "436087509998",
+    "project_id": "fmtapp-bc704",
+    "storage_bucket": "fmtapp-bc704.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:436087509998:android:c0a56da14c157d9f2174ff",
+        "android_client_info": {
+          "package_name": "com.farmtoolnp.fmt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "436087509998-vu5mqlhp8sp401s47dgbq2kg5fvagdha.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA81A-67L3I8sNVMpRAqXP5J25LmZdRU5c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "436087509998-vu5mqlhp8sp401s47dgbq2kg5fvagdha.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,33 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+platform:android do
+  desc "Deploy to Firebase"
+  lane:deploy do
+  begin
+     #(start) add this
+     firebase_app_distribution(
+         groups:"alpha",
+         release_notes:"Bug fixes and improvements.",
+         apk_path:"../build/app/outputs/flutter-apk/app-release.apk",
+         firebase_cli_path:"/home/bivek/nodejs/bin/firebase",
+         firebase_cli_token:"1//0gDC05cD2riUOCgYIARAAGBASNwF-L9IrUbGOGU1P1bXjchy_ZNBHkYVkRogObUUpItDBoA7KpbAQ5XEI_GzD25_i",
+         app:"1:436087509998:android:c0a56da14c157d9f2174ff",
+     )
+     end
+   end
+ end

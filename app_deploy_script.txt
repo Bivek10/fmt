@@ -1,0 +1,16 @@
+platform: android do
+ desc "Deploy to Firebase"
+ lane: deploy do
+ begin
+    #(start) add this
+    firebase_app_distribution(
+        groups:"testers"
+        release_notes:"Bug fixes and improvements."
+        apk_path:"../build/app/outputs/flutter-apk/app-release.apk"
+        firebase_cli_path:"/usr/local/bin/firebase"
+        firebase_cli_token:<YOUR_FIREBASE_CLI_TOKEN>
+        app:<YOUR_APP_ID>
+    )
+    end
+  end
+end
