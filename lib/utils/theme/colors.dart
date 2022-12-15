@@ -5,8 +5,8 @@ class AppColors {
   //rgba(1,95,101,255)
   static const Color primaryColor = Color.fromRGBO(1, 95, 101, 1);
   static const Color orangeColor = Color.fromRGBO(241, 131, 49, 1);
-  static const Color blackColor = Color.fromRGBO(255, 255, 255, 255);
-  static const Color whiteColor= Color(0xFFfbfbfb);
+  static const Color blackColor = Colors.black;
+  static const Color whiteColor = Color(0xFFfbfbfb);
   static const Color backgroundColor1 = Color(0xFFC4C4C4);
   static const Color backgroundColor2 = Color(0xFFfbfbfb);
   static const Color fillColor = Color(0xFFF1F1F1);

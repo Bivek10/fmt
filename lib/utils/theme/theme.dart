@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fmt/utils/theme/colors.dart';
 
@@ -12,9 +13,9 @@ class AppTheme {
   );
 
   static TextStyle headline2 = TextStyle(
-    fontSize: 18.sp,
+    fontSize: 26.sp,
     fontStyle: FontStyle.normal,
-    fontWeight: FontWeight.normal,
+    fontWeight: FontWeight.w700,
     leadingDistribution: TextLeadingDistribution.even,
     color: AppColors.blackColor,
   );
@@ -51,8 +52,8 @@ class AppTheme {
     color: AppColors.whiteColor,
   );
 
-  static TextStyle labellarge = TextStyle(
-    fontSize: 14.sp,
+  static TextStyle bodyText1 = TextStyle(
+    fontSize: 18.sp,
     fontStyle: FontStyle.normal,
     fontWeight: FontWeight.w600,
     leadingDistribution: TextLeadingDistribution.even,
@@ -75,7 +76,7 @@ class AppTheme {
 
   static ThemeData get lightTheme {
     return ThemeData(
-      fontFamily: "Exo2",
+      fontFamily: "exo2",
       visualDensity: VisualDensity.adaptivePlatformDensity,
       brightness: Brightness.light,
       textTheme: TextTheme(
@@ -84,18 +85,25 @@ class AppTheme {
         headline3: headline3,
         headline4: headline4,
         headline5: headline5,
-        labelLarge: labellarge,
-        labelSmall: labelsmall,
-        labelMedium: labelmedium,
+        bodyText1: bodyText1,
         button: button,
       ),
       appBarTheme: const AppBarTheme(
-        backgroundColor: AppColors.backgroundColor1,
-        iconTheme: IconThemeData(color: AppColors.blackColor),
+        elevation: 0,
+        backgroundColor: AppColors.backgroundColor2,
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarBrightness: Brightness.dark,
+          statusBarIconBrightness: Brightness.dark,
+          statusBarColor: AppColors.backgroundColor2,
+        ),
+        iconTheme: IconThemeData(
+          color: AppColors.blackColor,
+        ),
         titleTextStyle: TextStyle(
           color: AppColors.blackColor,
         ),
       ),
+      scaffoldBackgroundColor: AppColors.backgroundColor2,
     );
   }
 }
