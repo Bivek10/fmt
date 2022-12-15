@@ -11,6 +11,7 @@ class AppPages {
   AppPages._();
 
   static const INITIAL = Routes.SPLASH;
+  static const LOGIN = Routes.LOGIN;
 
   static final routes = [
     GetPage(

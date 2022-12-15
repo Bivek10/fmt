@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fmt/app/routes/app_pages.dart';
 import 'package:fmt/utils/theme/theme.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get/get_navigation/src/routes/transitions_type.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,6 +26,8 @@ class MyApp extends StatelessWidget {
             title: "Farm Tool",
             getPages: AppPages.routes,
             initialRoute: AppPages.INITIAL,
+            defaultTransition: Transition.topLevel,
+            transitionDuration: const Duration(milliseconds: 500),
             home: child,
           );
         });

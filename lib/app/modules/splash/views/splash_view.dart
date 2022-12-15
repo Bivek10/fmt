@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fmt/app/routes/app_pages.dart';
 import 'package:fmt/app/widgets/molecules/costum_button.dart';
 import 'package:fmt/app/widgets/molecules/empty_app_bar.dart';
 import 'package:fmt/functions/image_loader.dart';
@@ -53,7 +54,9 @@ class SplashView extends GetView<SplashController> {
             ),
             CostumButton(
               btnName: "Join Now",
-              btnEvent: () {},
+              btnEvent: () {
+                Get.toNamed(Routes.LOGIN);
+              },
             ),
           ],
         ),
