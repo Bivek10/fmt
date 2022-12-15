@@ -14,4 +14,13 @@ class AppColors {
   static const Color sucessColor = Color.fromRGBO(1, 95, 101, 1);
   static const Color errorColor = Color.fromARGB(255, 239, 59, 43);
   static const Color textColor = Color.fromRGBO(255, 255, 255, 255);
+  static const LinearGradient gradient1 = LinearGradient(colors: [
+    Color.fromARGB(255, 234, 255, 251),
+    Color.fromARGB(255, 206, 249, 255),
+    Color.fromARGB(255, 186, 255, 241),
+  ], stops: [
+    0.01,
+    0.4167,
+    1.0
+  ], begin: Alignment.topCenter, end: Alignment.bottomCenter);
 }
