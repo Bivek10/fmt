@@ -1,7 +1,14 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class RegistrationController extends GetxController {
-  //TODO: Implement RegistrationController
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController userNameController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+
+  final TextEditingController passwordController = TextEditingController();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  RxBool showPassword = true.obs;
 
   final count = 0.obs;
   @override

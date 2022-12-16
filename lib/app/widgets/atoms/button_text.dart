@@ -22,22 +22,25 @@ class ButtonText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: alignment,
-      child: TextButton(
-        onPressed: () {
-          onPressEvent();
-        },
-        child: Text.rich(
-          TextSpan(
-            text: btnName,
-            style: style,
-            children: [
-              TextSpan(
-                text: btnName1,
-                style: style1,
-              ),
-            ],
+    return Hero(
+      tag: "txtBtn",
+      child: Align(
+        alignment: alignment,
+        child: TextButton(
+          onPressed: () {
+            onPressEvent();
+          },
+          child: Text.rich(
+            TextSpan(
+              text: btnName,
+              style: style,
+              children: [
+                TextSpan(
+                  text: btnName1,
+                  style: style1,
+                ),
+              ],
+            ),
           ),
         ),
       ),
