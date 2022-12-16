@@ -67,9 +67,9 @@ class AppTheme {
     color: AppColors.blackColor,
   );
   static TextStyle labelmedium = TextStyle(
-    fontSize: 12.sp,
+    fontSize: 14.sp,
     fontStyle: FontStyle.normal,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w600,
     leadingDistribution: TextLeadingDistribution.even,
     color: AppColors.blackColor,
   );
@@ -86,6 +86,7 @@ class AppTheme {
         headline4: headline4,
         headline5: headline5,
         bodyText1: bodyText1,
+        caption: labelmedium,
         button: button,
       ),
       appBarTheme: const AppBarTheme(

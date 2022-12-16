@@ -1,14 +1,19 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/services.dart';
 
 class EmptyAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const EmptyAppBar({super.key});
+  const EmptyAppBar({super.key, required this.statusBarColor});
+  final Color statusBarColor;
 
   @override
   Widget build(BuildContext context) {
-    return AppBar();
+    return AppBar(
+      systemOverlayStyle: SystemUiOverlayStyle(
+        statusBarBrightness: Brightness.dark,
+        statusBarIconBrightness: Brightness.dark,
+        statusBarColor: statusBarColor,
+      ),
+    );
   }
 
   @override

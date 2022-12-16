@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fmt/app/routes/app_pages.dart';
+import 'package:fmt/app/widgets/atoms/buttons.dart';
 import 'package:fmt/app/widgets/molecules/costum_button.dart';
 import 'package:fmt/app/widgets/molecules/empty_app_bar.dart';
 import 'package:fmt/functions/image_loader.dart';
@@ -17,7 +18,9 @@ class SplashView extends GetView<SplashController> {
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
     return Scaffold(
-      appBar: const EmptyAppBar(),
+      appBar: const EmptyAppBar(
+        statusBarColor: AppColors.backgroundColor2,
+      ),
       body: Padding(
         padding: EdgeInsets.only(
           left: 20.w,
@@ -52,11 +55,18 @@ class SplashView extends GetView<SplashController> {
             SizedBox(
               height: 50.h,
             ),
-            CostumButton(
-              btnName: "Join Now",
-              btnEvent: () {
+            Button(
+              onPressed: () {
                 Get.toNamed(Routes.LOGIN);
               },
+              borderRadius: BorderRadius.circular(50.r),
+              size: ButtonSize.large,
+              fillColor: AppColors.primaryColor,
+              splashColor: AppColors.whiteDimColor,
+              child: Text(
+                " Join Now ",
+                style: Get.theme.textTheme.button,
+              ),
             ),
           ],
         ),
