@@ -23,4 +23,14 @@ class AppColors {
     0.4167,
     1.0
   ], begin: Alignment.topCenter, end: Alignment.bottomCenter);
+
+  static const LinearGradient gradient2 = LinearGradient(colors: [
+    Color.fromARGB(255, 221, 255, 248),
+    Color.fromARGB(255, 222, 251, 255),
+    Color.fromARGB(255, 237, 253, 250),
+  ], stops: [
+    0.01,
+    0.4167,
+    1.0
+  ], begin: Alignment.topCenter, end: Alignment.bottomCenter);
 }
