@@ -8,7 +8,7 @@ class LoginController extends GetxController {
   RxBool showPassword = true.obs;
 
   @override
-  void onInit() {
+  void onInit()  {
     super.onInit();
   }
 
