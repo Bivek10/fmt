@@ -11,5 +11,13 @@ jobs:
       - run: flutter doctor
       - run: flutter test
       - run: flutter build apk --release
-      - store_artifacts:
-          path: build/app/outputs/flutter-apk/app-release.apk
+      - run:
+          name: Bundle Install
+          working_directory: android
+          command: bundle install
+
+      - run:
+          name: Fastlane deploy to internal
+          working_directory: android
+          command: bundle exec 
+     
