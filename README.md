@@ -1,4 +1,5 @@
 # fmt
+
 A new Flutter project.
 
 Getting Started
@@ -58,3 +59,125 @@ flutter pub global activate get_cli
 // Shows the current CLI version: get -v // or get -version
 
 // For help get help
+
+# =============== start===============
+
+// Flutter Circle-ci integration and Fastlane configuration
+
+// step to setup Cricle ci:
+
+// step1: Create the flutter demo project :# flutter create flutter_demo
+// step2: Create a folder named .circleci in the project's root directory:# md .circleci
+// step3: Create a file named config.yml: # touch .circleci/config.yml
+// step4: Then, add the following at the topmost part of the file:
+jobs:
+build:
+docker: - image: cirrusci/flutter
+steps: - checkout - run: flutter doctor - run: flutter test - run: flutter build apk --release - store_artifacts:
+path: build/app/outputs/flutter-apk/app-release.apk
+// step5: Integrates Circle CI with GitHub and other platforms like Bitbucket.
+
+# =============== End ===============
+
+# ==============Start==================
+
+// help for fastlane setup in linux:
+step:1 In order to setup the fastlane firstly, we need to install the ruby
+
+# sudo apt install ruby ruby-dev
+
+step:2 Add the following to top of "~/.profile" file : # .profile located in user director example home/user.
+
+# export LC_ALL=en_US.UTF-8
+
+# export LANG=en_US.UTF-8
+
+step 3: Check of any errors with source ~/.profile command. If there is not output means all is good.
+
+# ~/.profile
+
+step4: Install Build essentials
+
+# sudo apt-get update
+
+# sudo apt-get install build-essential
+
+step5: Fastlane depends on Google API Clint lets install that first
+
+# sudo gem install google-api-client
+
+step6: Install Fastlane
+
+# sudo gem install fastlane -NV
+
+step7: Check installation
+Check your installation
+
+# ================End============
+
+# ================Start============
+
+// fastlane setup for android project
+step1: open the flutter project
+setp2: cd to android folder
+step3: enter following command
+
+# fastlane init
+
+enter the answer asked in terminal and
+once setup is compelted fastlane folder is created inside the
+android directory.
+
+# ================End============
+
+To deploy the build apk  in firebase, using firebase follow following steps:
+# create firebase project
+# add the applicaiton package id to firebase project.
+# download the google-services.json file and placed it into <projectname>/android/app/.
+# apply the google-service.json file in app-level build.gradle file 
+# like this: apply plugin:'com.google.gms.google-services'
+
+// once the firebase project setup is done click the app distribution tab
+# located on left menu bar.
+# click on create start.
+# create the test user groups.
+# all done..
+
+
+# ============Start=============
+To upload the apk bundle in app distribution test group.
+Install firebase_app_distribution plugin inside the android directory by following commands.
+# fastlane add_plugin firebase_app_distribution
+Once the plugin is added.. 
+Open the Fastlane file inside the fastlane folder.
+# past the below code. 
+
+platform:android do
+  desc "Deploy to Firebase"
+  lane:deploy do
+  begin
+     #(start) add this
+     firebase_app_distribution(
+         groups:"tester_group_name",
+         release_notes:"Bug fixes and improvements.",
+         apk_path:"../build/app/outputs/flutter-apk/app-release.apk",
+         firebase_cli_path:"/home/bivek/nodejs/bin/firebase",
+         firebase_cli_token:<firebase_cli_token>, 
+         app:<app_id>, #found in firebase project setting. 
+     )
+     end
+   end
+ end
+
+for firebase cli token 
+enter following command
+# firebase login:ci
+You will get the firebase_cli_login_token place it into firebae_cli_token
+After that, hit the following command to deploy the build apk in firebase app_distribution.
+# fastlane deploy
+This command automatically deploy the apk and send the invitation to all tester group memeber..
+# =================Thank YOU ===============
+
+
+
+# ===============End================
