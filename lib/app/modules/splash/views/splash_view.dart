@@ -32,19 +32,19 @@ class SplashView extends GetView<SplashController> {
           children: [
             Text.rich(
               TextSpan(
-                text: 'Smart Farming \nand ',
+                text: 'Application \nFor',
                 style: Get.theme.textTheme.headline2,
                 children: [
                   TextSpan(
-                    text: 'Agriculture \n',
+                    text: ' Playing \n',
                     style: Get.theme.textTheme.headline1,
                   ),
                   TextSpan(
-                    text: 'App For ',
+                    text: 'And ',
                     style: Get.theme.textTheme.headline2,
                   ),
                   TextSpan(
-                    text: 'Farmers',
+                    text: 'Learning',
                     style: Get.theme.textTheme.headline1!.copyWith(
                       color: AppColors.orangeColor,
                     ),

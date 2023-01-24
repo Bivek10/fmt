@@ -20,7 +20,7 @@ class RegistrationView extends GetView<RegistrationController> {
       appBar: const EmptyAppBar(statusBarColor: AppColors.backgroundColor3),
       body: SingleChildScrollView(
         child: Container(
-          height: Get.height,
+          height: Get.height * 1.2,
           decoration: const BoxDecoration(
             gradient: AppColors.gradient2,
           ),
@@ -40,7 +40,7 @@ class RegistrationView extends GetView<RegistrationController> {
                       style: Get.theme.textTheme.headline2,
                       children: [
                         TextSpan(
-                          text: 'Smart Farming\n',
+                          text: 'Playing\n',
                           style: Get.theme.textTheme.headline1,
                         ),
                         TextSpan(
@@ -48,7 +48,7 @@ class RegistrationView extends GetView<RegistrationController> {
                           style: Get.theme.textTheme.headline2,
                         ),
                         TextSpan(
-                          text: 'Agriculture',
+                          text: 'Learning',
                           style: Get.theme.textTheme.headline1!.copyWith(
                             color: AppColors.orangeColor,
                           ),
@@ -64,6 +64,8 @@ class RegistrationView extends GetView<RegistrationController> {
                     isRequried: true,
                     hinttext: "Username",
                     textEditingController: controller.userNameController,
+                    validator: (value) =>
+                        controller.validateUsernameName(value),
                   ),
                   SizedBox(
                     height: 20.h,
@@ -73,15 +75,18 @@ class RegistrationView extends GetView<RegistrationController> {
                     isRequried: true,
                     hinttext: "abc@gmail.com",
                     textEditingController: controller.emailController,
+                    validator: (value) => controller.validateEmail(value),
                   ),
                   SizedBox(
                     height: 20.h,
                   ),
                   CustomField(
                     title: "Phone",
+                    keyboardInputType: TextInputType.number,
                     isRequried: true,
-                    hinttext: "abc@gmail.com",
-                    textEditingController: controller.emailController,
+                    hinttext: "9800965652",
+                    textEditingController: controller.phoneController,
+                    validator: (value) => controller.validateNumber(value),
                   ),
                   SizedBox(
                     height: 20.h,
@@ -91,6 +96,18 @@ class RegistrationView extends GetView<RegistrationController> {
                     isRequried: true,
                     hinttext: "Password",
                     textEditingController: controller.passwordController,
+                    validator: (value) => controller.validatePassword(value),
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  CustomField(
+                    title: "Confrim-Password",
+                    isRequried: true,
+                    hinttext: "Password",
+                    validator: (value) =>
+                        controller.validateConfirmPassword(value),
+                    textEditingController: controller.confrimPasswordController,
                   ),
                   SizedBox(
                     height: 20.h,
@@ -98,7 +115,9 @@ class RegistrationView extends GetView<RegistrationController> {
                   Align(
                     alignment: Alignment.center,
                     child: Button(
-                      onPressed: () {},
+                      onPressed: () {
+                        controller.validateData();
+                      },
                       borderRadius: BorderRadius.circular(8.r),
                       size: ButtonSize.large,
                       fillColor: AppColors.primaryColor,
