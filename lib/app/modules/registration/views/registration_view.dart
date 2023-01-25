@@ -16,6 +16,7 @@ class RegistrationView extends GetView<RegistrationController> {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
+    controller.context = context;
     return Scaffold(
       appBar: const EmptyAppBar(statusBarColor: AppColors.backgroundColor3),
       body: SingleChildScrollView(
@@ -146,5 +147,6 @@ class RegistrationView extends GetView<RegistrationController> {
         ),
       ),
     );
+  
   }
 }

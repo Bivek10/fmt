@@ -2,5 +2,6 @@ import 'package:fmt/config/config.dart';
 
 class APIs {
   static const String baseUrl = Config.apiUrl;
-  static const String register = "/user/create";
+  static const String register = "/users/register";
+  static const String quizsData = "/quizs";
 }

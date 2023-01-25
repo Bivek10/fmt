@@ -1,7 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fmt/app/network/api_error.dart';
+import 'package:fmt/app/routes/app_pages.dart';
+import 'package:fmt/app/services/register/register_request_model.dart';
+import 'package:fmt/app/services/register/register_request_response.dart';
+import 'package:fmt/app/services/repositories/app_repo.dart';
+import 'package:fmt/app/services/services/app_services.dart';
+import 'package:fmt/app/widgets/circular_loader.dart';
 import 'package:fmt/app/widgets/components/common_widget.dart';
 import 'package:fmt/global_constants.dart';
+import 'package:fmt/utils/memory_management.dart';
 import 'package:get/get.dart';
 
 class RegistrationController extends GetxController {
@@ -14,10 +22,16 @@ class RegistrationController extends GetxController {
       TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   RxBool showPassword = true.obs;
+  AppRepo? appRepo;
+  RegisterRequestModel registerRequestModel = RegisterRequestModel();
+  BuildContext? context;
+  CircularLoader? circularLoader;
 
   final count = 0.obs;
   @override
   void onInit() {
+    circularLoader = Get.put(CircularLoader());
+    appRepo = Get.put(AppRepoImplementaion());
     super.onInit();
   }
 
@@ -87,15 +101,33 @@ class RegistrationController extends GetxController {
   }
 
   validateData() async {
-    if (formKey.currentState!.validate())  {
+    if (formKey.currentState!.validate()) {
       try {
-        await firebaseAuthInstace.createUserWithEmailAndPassword(
-            email: emailController.text,
-            password: confrimPasswordController.text);
-         
+        circularLoader!.showCircularLoader(context!);
+        UserCredential response =
+            await firebaseAuthInstace.createUserWithEmailAndPassword(
+                email: emailController.text,
+                password: confrimPasswordController.text);
+
+        registerRequestModel.email = emailController.text;
+        registerRequestModel.phoneNumber = phoneController.text;
+        registerRequestModel.password = confrimPasswordController.text;
+        registerRequestModel.id = response.user!.uid;
+        registerRequestModel.fullName = userNameController.text;
+
+        final responses =
+            await appRepo!.getUserRegister(request: registerRequestModel);
+        circularLoader!.hideCircularLoader();
+        if (responses is APIError) {
+          errorMessage(message: responses.error.toString());
+        } else if (responses is RegisterRequestResponse) {
+          String tokenID = await response.user!.getIdToken();
+          MemoryManagement.setFirebaseToken(tokenID: tokenID);
+          successMessage(message: responses.msg);
+          Get.toNamed(Routes.QUIZDASHBOARD);
+        }
       } on FirebaseAuthException catch (e) {
-        print(e.toString());
-        
+        errorMessage(message: e.message);
       }
     }
   }
