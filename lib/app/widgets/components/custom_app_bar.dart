@@ -20,6 +20,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: statusBarColor,
       leadingWidth: leadingIcon == null ? 0 : 56.0,
       leading: IconButton(
         onPressed: () {

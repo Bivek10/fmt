@@ -147,6 +147,5 @@ class RegistrationView extends GetView<RegistrationController> {
         ),
       ),
     );
-  
   }
 }

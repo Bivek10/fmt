@@ -123,6 +123,7 @@ class RegistrationController extends GetxController {
         } else if (responses is RegisterRequestResponse) {
           String tokenID = await response.user!.getIdToken();
           MemoryManagement.setFirebaseToken(tokenID: tokenID);
+          MemoryManagement.setUserName(username: userNameController.text);
           successMessage(message: responses.msg);
           Get.toNamed(Routes.QUIZDASHBOARD);
         }
@@ -131,4 +132,5 @@ class RegistrationController extends GetxController {
       }
     }
   }
+
 }

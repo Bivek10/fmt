@@ -9,12 +9,20 @@ class MemoryManagement {
     return true;
   }
 
-  static String ? getFirebaseToken() {
+  static String? getFirebaseToken() {
     return prefs!.getString(SharedPrefsKeys.FIREBASE_TOKEN)!;
   }
 
   static void setFirebaseToken({String? tokenID}) {
     prefs!.setString(SharedPrefsKeys.FIREBASE_TOKEN, tokenID!);
+  }
+
+  static String? getUserName() {
+    return prefs!.getString(SharedPrefsKeys.USER_NAME)!;
+  }
+
+  static void setUserName({String? username}) {
+    prefs!.setString(SharedPrefsKeys.USER_NAME, username!);
   }
 
   static void clearMemory() async {

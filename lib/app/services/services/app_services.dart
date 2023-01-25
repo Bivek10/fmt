@@ -12,10 +12,10 @@ import '../repositories/app_repo.dart';
 class AppRepoImplementaion implements AppRepo {
   @override
   Future getUserRegister({RegisterRequestModel? request}) async {
-    print(request!.toJson());
+   
     final response = await APIHandler.hitApi(dio.post(
       APIs.register,
-      data: request.toJson(),
+      data: request!.toJson(),
       options: Options(headers: {
         "Content-Type": "application/json",
       }),
@@ -30,7 +30,7 @@ class AppRepoImplementaion implements AppRepo {
   @override
   Future getQuizData() async {
     final response = await APIHandler.hitApi(dio.get(
-      APIs.register,
+      APIs.quizsData,
       options: Options(headers: {
         "Content-Type": "application/json",
       }),

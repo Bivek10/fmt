@@ -16,9 +16,11 @@ import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
   const LoginView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
+    controller.context = context;
     return Scaffold(
         appBar: const EmptyAppBar(statusBarColor: AppColors.backgroundColor3),
         body: SingleChildScrollView(
@@ -26,7 +28,7 @@ class LoginView extends GetView<LoginController> {
             height: Get.height,
             decoration: const BoxDecoration(gradient: AppColors.gradient2),
             child: Form(
-              key: controller.formKey,
+              key: controller.formKey1,
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.h),
                 child: Column(
@@ -70,6 +72,7 @@ class LoginView extends GetView<LoginController> {
                       isRequried: true,
                       hinttext: "abc@gmail.com",
                       textEditingController: controller.emailController,
+                      validator: (value) => controller.validateEmail(value),
                     ),
                     SizedBox(
                       height: 20.h,
@@ -78,6 +81,7 @@ class LoginView extends GetView<LoginController> {
                       title: "Password",
                       isRequried: true,
                       hinttext: "Password",
+                      validator: (value) => controller.validatePassword(value),
                       textEditingController: controller.passwordController,
                     ),
                     SizedBox(
@@ -86,7 +90,9 @@ class LoginView extends GetView<LoginController> {
                     Align(
                       alignment: Alignment.center,
                       child: Button(
-                        onPressed: () {},
+                        onPressed: () {
+                          controller.validateData();
+                        },
                         borderRadius: BorderRadius.circular(8.r),
                         size: ButtonSize.large,
                         fillColor: AppColors.primaryColor,
@@ -112,7 +118,6 @@ class LoginView extends GetView<LoginController> {
                 ),
               ),
             ),
-          
           ),
         ));
   }
