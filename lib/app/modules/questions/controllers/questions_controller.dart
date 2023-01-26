@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:fmt/app/network/api_error.dart';
 import 'package:fmt/app/services/questions/question_request_response.dart';
+import 'package:fmt/app/services/quiz_history/quiz_history_request.dart';
+import 'package:fmt/app/services/quiz_history/quiz_history_request_response.dart';
 import 'package:fmt/app/services/quizs/quiz_request_response.dart';
 import 'package:fmt/app/services/repositories/app_repo.dart';
 import 'package:fmt/app/services/services/app_services.dart';
 import 'package:fmt/app/widgets/circular_loader.dart';
 import 'package:fmt/app/widgets/components/common_widget.dart';
+import 'package:fmt/utils/memory_management.dart';
 import 'package:get/get.dart';
 
 class QuestionsController extends GetxController {
@@ -80,7 +83,24 @@ class QuestionsController extends GetxController {
       }
     }
 
+    postScore();
+  }
+
+  postScore() async {
     successMessage(message: "You have scored $quizScore !");
-    
+    circularLoader!.showCircularLoader(context!);
+    QuizHistoryRequest quizHistoryRequest = QuizHistoryRequest(
+        quizId: data!.id,
+        score: quizScore,
+        userId: MemoryManagement.getUserUID());
+    circularLoader!.hideCircularLoader();
+    final response =
+        await appRepo!.postQuizHistory(request: quizHistoryRequest);
+    if (response is APIError) {
+      errorMessage(message: response.error);
+    } else if (response is QuizHistoryRequestResponse) {
+      successMessage(message: response.msg);
+      Get.back();
+    }
   }
 }

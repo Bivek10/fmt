@@ -17,6 +17,14 @@ class MemoryManagement {
     prefs!.setString(SharedPrefsKeys.FIREBASE_TOKEN, tokenID!);
   }
 
+  static String? getUserUID() {
+    return prefs!.getString(SharedPrefsKeys.USER_ID)!;
+  }
+
+  static void setUserUID({String? uID}) {
+    prefs!.setString(SharedPrefsKeys.USER_ID, uID!);
+  }
+
   static String? getUserName() {
     return prefs!.getString(SharedPrefsKeys.USER_NAME)!;
   }

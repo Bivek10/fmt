@@ -71,6 +71,8 @@ class LoginController extends GetxController {
             await firebaseAuthInstace.signInWithEmailAndPassword(
                 email: emailController.text, password: passwordController.text);
         String tokenID = await response.user!.getIdToken();
+        String userid = response.user!.uid;
+        MemoryManagement.setUserUID(uID: userid);
         MemoryManagement.setFirebaseToken(tokenID: tokenID);
         MemoryManagement.setUserName(username: "username");
         circularLoader!.hideCircularLoader();

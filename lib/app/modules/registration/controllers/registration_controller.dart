@@ -122,6 +122,8 @@ class RegistrationController extends GetxController {
           errorMessage(message: responses.error.toString());
         } else if (responses is RegisterRequestResponse) {
           String tokenID = await response.user!.getIdToken();
+          String userid = response.user!.uid;
+          MemoryManagement.setUserUID(uID: userid);
           MemoryManagement.setFirebaseToken(tokenID: tokenID);
           MemoryManagement.setUserName(username: userNameController.text);
           successMessage(message: responses.msg);
