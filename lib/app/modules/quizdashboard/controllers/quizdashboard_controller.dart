@@ -16,6 +16,7 @@ class QuizdashboardController extends GetxController {
   CircularLoader? circularLoader;
   BuildContext? context;
   QuizRequestResponse quizRequestResponse = QuizRequestResponse();
+  
   List<Data> quizData = [];
 
   @override

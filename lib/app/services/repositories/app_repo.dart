@@ -4,4 +4,5 @@ abstract class AppRepo {
   Future getUserRegister({RegisterRequestModel? request});
 
   Future getQuizData();
+  Future getQuestionData({String? quizID});
 }

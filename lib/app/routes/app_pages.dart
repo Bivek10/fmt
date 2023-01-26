@@ -1,8 +1,10 @@
-import 'package:fmt/middlerwares/auth_middleware.dart';
 import 'package:get/get.dart';
 
+import '../../middlerwares/auth_middleware.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
+import '../modules/questions/bindings/questions_binding.dart';
+import '../modules/questions/views/questions_view.dart';
 import '../modules/quizdashboard/bindings/quizdashboard_binding.dart';
 import '../modules/quizdashboard/views/quizdashboard_view.dart';
 import '../modules/registration/bindings/registration_binding.dart';
@@ -39,6 +41,11 @@ class AppPages {
       page: () => const QuizdashboardView(),
       binding: QuizdashboardBinding(),
       middlewares: [AuthMiddleware()],
+    ),
+    GetPage(
+      name: _Paths.QUESTIONS,
+      page: () => const QuestionsView(),
+      binding: QuestionsBinding(),
     ),
   ];
 }

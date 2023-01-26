@@ -48,15 +48,15 @@ class LoginView extends GetView<LoginController> {
                         style: Get.theme.textTheme.headline2,
                         children: [
                           TextSpan(
-                            text: 'Smart Farming\n',
+                            text: 'Smart Learning\n',
                             style: Get.theme.textTheme.headline1,
                           ),
                           TextSpan(
-                            text: 'and ',
+                            text: 'by ',
                             style: Get.theme.textTheme.headline2,
                           ),
                           TextSpan(
-                            text: 'Agriculture',
+                            text: 'Playing',
                             style: Get.theme.textTheme.headline1!.copyWith(
                               color: AppColors.orangeColor,
                             ),

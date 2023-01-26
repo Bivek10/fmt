@@ -73,7 +73,9 @@ class LoginController extends GetxController {
         String tokenID = await response.user!.getIdToken();
         MemoryManagement.setFirebaseToken(tokenID: tokenID);
         MemoryManagement.setUserName(username: "username");
+        circularLoader!.hideCircularLoader();
         Get.toNamed(Routes.QUIZDASHBOARD);
+
         // final responses =
         //     await appRepo!.getUserRegister(request: registerRequestModel);
         // circularLoader!.hideCircularLoader();

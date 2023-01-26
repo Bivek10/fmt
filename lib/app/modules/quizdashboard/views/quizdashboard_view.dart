@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fmt/app/routes/app_pages.dart';
 import 'package:fmt/app/widgets/components/custom_app_bar.dart';
 import 'package:fmt/app/widgets/components/dashboard_item.dart';
 import 'package:fmt/app/widgets/molecules/empty_app_bar.dart';
@@ -19,10 +20,10 @@ class QuizdashboardView extends GetView<QuizdashboardController> {
     controller.context = context;
     return Scaffold(
       appBar: CustomAppBar(
-        title: MemoryManagement.getUserName() == null
-            ? ""
-            : MemoryManagement.getUserName()!,
-        //title: "",
+        // title: MemoryManagement.getUserName() == null
+        //     ? ""
+        //     : MemoryManagement.getUserName()!,
+        title: "",
         statusBarColor: AppColors.backgroundColor3,
         titleStyle: Get.theme.textTheme.headline2!,
         leadingIcon: Icons.logout,
@@ -83,6 +84,13 @@ class QuizdashboardView extends GetView<QuizdashboardController> {
                           return DashboardItem(
                             quizName: dashitem.quiz!,
                             quizID: dashitem.id!.toString(),
+                            onClick: () {
+                              print(dashitem);
+                              //Get.toNamed(Routes.QUESTIONS);
+                              /// Get.toNamed(Routes.LOGIN);
+                              Get.toNamed(Routes.QUESTIONS,
+                                  arguments: {"data": dashitem});
+                            },
                           );
                         },
                       ),
